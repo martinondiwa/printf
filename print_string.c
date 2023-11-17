@@ -1,30 +1,31 @@
 #include "main.h"
 
 /**
- * print_str - Writes the given string to the standard output.
- * @arguments: Input string to be printed.
- * @buf: Buffer pointer.
- * @ibuf: Index for the buffer pointer.
+ * printf_string - Writes the given string to the standard output.
+ * @val: Argument list containing the string to be printed.
  *
  * Return: On success, returns the number of characters printed.
  */
-int print_str(va_list arguments, char *buf, unsigned int ibuf)
+int printf_string(val_list val)
 {
-	char *str;
-	unsigned int i;
-	char nill[] = "(null)";
+    char *str;
+    unsigned int i;
+    char nill[] = "(null)";
 
-	str = va_arg(arguments, char *);
+    str = va_arg(val, char *);
 
-	if (str == NULL)
-	{
-		for (i = 0; nill[i]; i++)
-			ibuf = handl_buf(buf, nill[i], ibuf);
-		return (6);
-	}
+    if (str == NULL)
+    {
+        /* Handle NULL string by printing "(null)" */
+        for (i = 0; nill[i]; i++)
+            ibuf = handl_buf(buf, nill[i], ibuf);
 
-	for (i = 0; str[i]; i++)
-		ibuf = handl_buf(buf, str[i], ibuf);
+        return (6);
+    }
 
-	return (i);
+    /* Iterate through the characters of the string and print each one */
+    for (i = 0; str[i]; i++)
+        ibuf = handl_buf(buf, str[i], ibuf);
+
+    return (i);
 }
