@@ -8,14 +8,14 @@
  */
 int _strlen(char *str)
 {
-    int f;
+	int f;
 
-    for (f = 0; str[f] != 0; f++)
-    {
-        /* Loop through the string characters */
-    }
+	for (f = 0; str[f] != 0; f++)
+	{
+		/* Loop through the string characters */
+	}
 
-    return (f);
+	return (f);
 }
 
 /**
@@ -26,12 +26,12 @@ int _strlen(char *str)
  */
 int _strlenc(const char *str)
 {
-    int f;
+	int f;
 
-    for (f = 0; str[f] != 0; f++)
-    {
-        /* Loop through the constant string characters */
-    }
+	for (f = 0; str[f] != 0; f++)
+	{
+		/* Loop through the constant string characters */
+	}
 
-    return (f);
+	return (f);
 }

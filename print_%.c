@@ -7,6 +7,6 @@
  */
 int print_percent(void)
 {
-       	_putchar(37);  /* Print the character '%' */
+	_putchar(37);  /* Print the character '%' */
 	return (1);
 }

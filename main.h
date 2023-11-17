@@ -26,4 +26,6 @@ int printf_string(val_list val)
 int _strlen(char *str)
 int _strlenc(const char *str)
 int print_percent(void)
+int print_int(val_list args)
+
 #endif
