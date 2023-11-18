@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * struct print - Structure for printer functions
@@ -18,14 +19,27 @@ typedef struct print
     int (*f)(va_list, char *, unsigned int);
 } print_t;
 
-int _putchar(char c)
-int _printf(const char *format, ...);
-int printf_char(val_list val)
-int printf_char(val_list val)	
-int printf_string(val_list val)
-int _strlen(char *str)
-int _strlenc(const char *str)
-int print_percent(void)
-int print_int(val_list args)
+#define MAX_BUF_SIZE 1024
 
+int ibuf;
+char buf[MAX_BUF_SIZE];
+
+int _putchar(char c);
+int handl_buf(char *buf, char c, int ibuf);
+int printf_string(va_list val);
+
+int _putchar(char c);
+int _printf(const char *format, ...);
+int printf_char(va_list val);
+int printf_char(va_list val);	
+int printf_string(va_list val);
+int _strlen(char *str);
+int _strlenc(const char *str);
+int print_percent(void);
+int print_int(va_list args);
+int print_bin(va_list val);
+int print_unsigned(va_list args);
+int print_oct(va_list val);
+int print_hex(va_list val);
+int print_Hex(va_list val);
 #endif
