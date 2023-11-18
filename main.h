@@ -23,6 +23,8 @@ typedef struct print
 
 int ibuf;
 char buf[MAX_BUF_SIZE];
+int print_HEX_extra(int value);
+int print_hex_extra(int value);
 
 int _putchar(char c);
 int handl_buf(char *buf, char c, int ibuf);
@@ -35,6 +37,7 @@ int printf_char(va_list val);
 int printf_string(va_list val);
 int _strlen(char *str);
 int _strlenc(const char *str);
+int print_hexc_string(va_list val);
 int print_percent(void);
 int print_int(va_list args);
 int print_bin(va_list val);
@@ -42,4 +45,8 @@ int print_unsigned(va_list args);
 int print_oct(va_list val);
 int print_hex(va_list val);
 int print_Hex(va_list val);
+int print_pointer(va_list val);
+int print_hexa_extra(unsigned long int num);
+int print_rev(va_list arguments, char *buf, unsigned int ibuf);
+int print_rot(va_list arguments, char *buf, unsigned int ibuf);
 #endif
