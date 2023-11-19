@@ -38,8 +38,7 @@ int _printf(const char *format, ...)
  *
  * Return: The length of the printed string.
  */
-{
-        int i = 0, j, length = 0; struct FormatSpecifier
+int i = 0, j, length = 0; struct FormatSpecifier
     {
  const char *format;
   int (*function)(va_list);

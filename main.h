@@ -35,6 +35,11 @@ int write_unsgnd(int is_negative, int ind, char buffer[], int flags, int width, 
 
 #define BUFF_SIZE 1024
 
+#ifdef FD_ZERO
+#undef FD_ZERO
+#endif
+#define FD_ZERO
+
 #ifdef BUFSIZ
 #undef BUFSIZ
 #endif
