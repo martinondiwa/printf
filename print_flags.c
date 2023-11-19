@@ -1,5 +1,7 @@
 #include "main.h"
 
+#include "flags.h"
+
 /**
  * get_flags - Determines active flags in a format string
  * @format: Formatted string for argument printing

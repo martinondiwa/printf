@@ -1,5 +1,7 @@
 #include "main.h"
 
+#include "custom_flags.h"
+
 /*
 ** handle_write_char - Handles writing a single character.
 ** @c: The character to write.

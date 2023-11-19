@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <sys/select.h>
 
+
 /**
  * struct print - Structure for printer functions
  * @type_arg: Identifier for the type
@@ -32,17 +33,12 @@ int write_unsgnd(int is_negative, int ind, char buffer[], int flags, int width, 
 #define F_PLUS '+'
 #define F_SPACE '\0'
 
-#define F_MINUS 0x02
-#ifdef FD_ZERO
-#undef FD_ZERO
-#endif
-#define FD_ZERO  0x01
+#define BUFF_SIZE 1024
 
 #ifdef BUFSIZ
 #undef BUFSIZ
 #endif
 #define BUFSIZ 100
-
 
 int ibuf;
 char buf[MAX_BUF_SIZE];
@@ -52,6 +48,7 @@ int print_hex_extra(int value);
 int _putchar(char c);
 int handl_buf(char *buf, char c, int ibuf);
 int printf_string(va_list val);
+void print_buffer(char buffer[], int *buff_ind) __attribute__((unused));
 
 int process_format(const char *format, va_list args);
 int _putchar(char c);
@@ -88,5 +85,6 @@ long int convert_size_unsgnd(unsigned long int num, int size);
 int handle_write_char(char c, char buffer[], int flags, int width, int precision, int size);
 int write_number(int is_negative, int ind, char buffer[], int flags, int width, int precision, int size);
 int write_num(int ind, char buffer[], int flags, int width, int prec, int length, char padd, char extra_c);
-
+int handle_print(const char *format, int *i, va_list list, char buffer[],
+		int flags, int width, int precision, int size);
 #endif
