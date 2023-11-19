@@ -54,4 +54,14 @@ int get_flags(const char *format, int *i);
 int get_precision(const char *format, int *i, va_list list);
 int get_size(const char *format, int *i);
 int get_width(const char *format, int *i, va_list list);
+
+#define S_LONG 0
+#define S_SHORT 1
+
+int is_printable(char c);
+int append_hexa_code(char ascii_code, char buffer[], int i);
+int is_digit(char c);
+long int convert_size_number(long int num, int size);
+long int convert_size_unsgnd(unsigned long int num, int size);
+
 #endif

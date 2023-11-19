@@ -11,11 +11,16 @@ int _printf(const char * const format, ...)
 		{"%c", print_character},
 		{"%%", print_ % },
 		{"%i", print_iprint_int},
-		{"%d",  print_iprint_int}, {"%r", print_string_reverse},
-		{"%R", print_rot13}, {"%b", print_binary},
+		{"%d",  print_iprint_int},
+		{"%r", print_string_reverse},
+		{"%R", print_rot13},
+		{"%b", print_binary},
 		{"%u", print_unsign},
-		{"%o", print_octal}, {"%x", print_x}, {"%X", print_X},
-		{"%S", print_hex_extra}, {"%p", print_ptr}
+		{"%o", print_octal},
+		{"%x", print_x},
+		{"%X", print_X},
+		{"%S", print_hex_extra},
+		{"%p", print_ptr}
 	};
 
 	va_list args;
