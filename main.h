@@ -53,6 +53,7 @@ int _putchar(char c);
 int handl_buf(char *buf, char c, int ibuf);
 int printf_string(va_list val);
 
+int process_format(const char *format, va_list args);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int printf_char(va_list val);
