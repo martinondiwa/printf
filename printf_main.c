@@ -4,6 +4,17 @@
 int _printf(const char *format, ...);
 int process_format(const char *format, va_list args);
 
+/**
+ * struct FormatSpecifier - Struct to hold format specifiers and their corresponding functions.
+ * @format: Format specifier.
+ * @function: Pointer to the function handling the specifier.
+ */
+struct FormatSpecifier
+{
+    const char *format;
+    int (*function)(va_list);
+};
+
 int main(void)
 {
     _printf("Hello, %s!\n", "world");
@@ -38,26 +49,25 @@ int _printf(const char *format, ...)
  *
  * Return: The length of the printed string.
  */
-int i = 0, j, length = 0; struct FormatSpecifier
-    {
- const char *format;
-  int (*function)(va_list);
- } p[] ={
-                {"%s", printf_string}, {"%c", printf_char},
-                {"%%",  print_int}, {"%i", print_int},
-                {"%d", print_pointer},
-                {"%r", print_reverse}, {"%R", print_hexc_string},
-                {"%b", print_bin}, {"%u", print_unsigned},
-                {"%o", print_oct}, {"%x", print_hex}, {"%X", print_hex},
-                {"%S", print_pointer}, {"%p", print_pointer}
-        };
+int process_format(const char *format, va_list args)
+{
+    int i = 0, j, length = 0;
+    struct FormatSpecifier p[] = {
+        {"%s", printf_string}, {"%c", printf_char},
+        {"%%", print_int}, {"%i", print_int},
+        {"%d", print_pointer},
+        {"%r", print_hexc_string}, {"%R", print_hexc_string},
+        {"%b", print_bin}, {"%u", print_unsigned},
+        {"%o", print_oct}, {"%x", print_hex}, {"%X", print_hex},
+        {"%S", print_pointer}, {"%p", print_pointer}
+    };
 
     while (format[i] != '\0')
     {
-        j = 13; /* Number of elements in the 'p' array */
+        j = sizeof(p) / sizeof(p[0]) - 1;
         while (j >= 0)
         {
-            if (format[i] == '%' && format[i + 1] == p[j].ph[1])
+            if (format[i] == '%' && format[i + 1] == p[j].format[1])
             {
                 length += p[j].function(args);
                 i += 2;
