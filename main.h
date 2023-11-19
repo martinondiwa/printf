@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/select.h>
 
 /**
  * struct print - Structure for printer functions
@@ -15,14 +16,33 @@
  */
 typedef struct print
 {
-    char *type_arg;
-    int (*f)(va_list, char *, unsigned int);
-} print_t;
+	char *type_arg;
+	int (*f)(va_list, char *, unsigned int);
+} print_t; 
 
+#define UNUSED(x) (void)(x)
+
+int write_num(int ind, char buffer[], int flags, int width, int prec, int length, char padd, char extra_c);
+int write_unsgnd(int is_negative, int ind, char buffer[], int flags, int width, int precision, int size);
 #define MAX_BUF_SIZE 1024
 
 #define S_LONG 0
 #define S_SHORT 1
+
+#define F_PLUS '+'
+#define F_SPACE '\0'
+
+#define F_MINUS 0x02
+#ifdef FD_ZERO
+#undef FD_ZERO
+#endif
+#define FD_ZERO  0x01
+
+#ifdef BUFSIZ
+#undef BUFSIZ
+#endif
+#define BUFSIZ 100
+
 
 int ibuf;
 char buf[MAX_BUF_SIZE];
@@ -36,7 +56,7 @@ int printf_string(va_list val);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int printf_char(va_list val);
-int printf_char(va_list val);	
+int printf_char(va_list val);
 int printf_string(va_list val);
 int _strlen(char *str);
 int _strlenc(const char *str);
@@ -64,7 +84,8 @@ int is_digit(char c);
 long int convert_size_number(long int num, int size);
 long int convert_size_unsgnd(unsigned long int num, int size);
 
-int handle_write_char(char c, char buffer[],int flags, int width, int precision, int size);
-int write_number(int is_negative, int ind, char buffer[],int flags, int width, int precision, int size);
-int write_num(int ind, char buffer[],int flags, int width, int prec,int length, char padd, char extra_c)
+int handle_write_char(char c, char buffer[], int flags, int width, int precision, int size);
+int write_number(int is_negative, int ind, char buffer[], int flags, int width, int precision, int size);
+int write_num(int ind, char buffer[], int flags, int width, int prec, int length, char padd, char extra_c);
+
 #endif

@@ -2,6 +2,21 @@
 #include <stdio.h>
 #include "main.h"
 
+int write_num(int ind, char buffer[],
+		int flags, int width, int prec,
+		int length, char padd, char extra_c)
+{
+	UNUSED(ind);
+	UNUSED(buffer);
+	UNUSED(flags);
+	UNUSED(width);
+	UNUSED(prec);
+	UNUSED(length);
+	UNUSED(padd);
+	UNUSED(extra_c);
+
+	return (0);
+}
 /**
  * main - Entry point
  *
@@ -38,7 +53,8 @@ int main(void)
 	len2 = printf("Percent:[%%]\n");
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
-	_printf("Unknown:[%r]\n");
-	printf("Unknown:[%r]\n");
+	_printf("Unknown:[%s]\n", "I am a string !");
+	printf("Unknown:[%s]\n", "I am a string !");
+
 	return (0);
 }
