@@ -49,4 +49,6 @@ int print_pointer(va_list val);
 int print_hexa_extra(unsigned long int num);
 int print_rev(va_list arguments, char *buf, unsigned int ibuf);
 int print_rot(va_list arguments, char *buf, unsigned int ibuf);
+int get_size(const char *format, int *i);
+int get_flags(const char *format, int *i);
 #endif
