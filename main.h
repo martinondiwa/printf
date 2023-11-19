@@ -51,4 +51,6 @@ int print_rev(va_list arguments, char *buf, unsigned int ibuf);
 int print_rot(va_list arguments, char *buf, unsigned int ibuf);
 int get_size(const char *format, int *i);
 int get_flags(const char *format, int *i);
+int get_precision(const char *format, int *i, va_list list);
+int get_size(const char *format, int *i);
 #endif
