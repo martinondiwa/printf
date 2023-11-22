@@ -19,12 +19,14 @@ typedef struct print
 {
 	char *type_arg;
 	int (*f)(va_list, char *, unsigned int);
-} print_t; 
+} print_t;
 
 #define UNUSED(x) (void)(x)
 
-int write_num(int ind, char buffer[], int flags, int width, int prec, int length, char padd, char extra_c);
-int write_unsgnd(int is_negative, int ind, char buffer[], int flags, int width, int precision, int size);
+int write_num(int ind, char buffer[], int flags, int width,
+		int prec, int length, char padd, char extra_c);
+int write_unsgnd(int is_negative, int ind, char buffer[],
+		int flags, int width, int precision, int size);
 #define MAX_BUF_SIZE 1024
 
 #define S_LONG 0
@@ -33,6 +35,17 @@ int write_unsgnd(int is_negative, int ind, char buffer[], int flags, int width, 
 #define F_PLUS '+'
 #define F_SPACE '\0'
 
+ /*struct: Define members of the structure*/
+struct FormatSpecifier {
+    const char *format;
+    int (*function)(va_list args);
+};
+
+int printf_string(va_list args);
+int print_char(va_list args);
+int print_int(va_list args);
+
+int process_format(const char *format, va_list args);
 #define BUFF_SIZE 1024
 
 #ifdef FD_ZERO
@@ -44,6 +57,7 @@ int write_unsgnd(int is_negative, int ind, char buffer[], int flags, int width, 
 #undef BUFSIZ
 #endif
 #define BUFSIZ 100
+
 
 int ibuf;
 char buf[MAX_BUF_SIZE];
@@ -87,9 +101,12 @@ int is_digit(char c);
 long int convert_size_number(long int num, int size);
 long int convert_size_unsgnd(unsigned long int num, int size);
 
-int handle_write_char(char c, char buffer[], int flags, int width, int precision, int size);
-int write_number(int is_negative, int ind, char buffer[], int flags, int width, int precision, int size);
-int write_num(int ind, char buffer[], int flags, int width, int prec, int length, char padd, char extra_c);
+int handle_write_char(char c, char buffer[],
+		int flags, int width, int precision, int size);
+int write_number(int is_negative, int ind, char buffer[],
+		int flags, int width, int precision, int size);
+int write_num(int ind, char buffer[], int flags,
+		int width, int prec, int length, char padd, char extra_c);
 int handle_print(const char *format, int *i, va_list list, char buffer[],
 		int flags, int width, int precision, int size);
 #endif
